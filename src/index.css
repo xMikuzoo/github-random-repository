@@ -120,4 +120,20 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-8;
+  }
+  ::-webkit-scrollbar-track:hover,
+  ::-webkit-scrollbar-thumb:hover {
+    @apply cursor-pointer;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-md border-0 border-solid border-transparent bg-clip-content bg-muted-foreground;
+  }
 }
