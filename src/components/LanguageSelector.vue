@@ -24,7 +24,7 @@ const emit = defineEmits(["languageSelected"]);
 
 const open = ref(false);
 const programmingLanguages = ref<ProgrammingLanguage[]>([]);
-const selectedProgrammingLangague = ref<ProgrammingLanguage>();
+const selectedProgrammingLanguage = ref<ProgrammingLanguage>();
 
 onMounted(async () => {
   await fetch(
@@ -47,8 +47,8 @@ onMounted(async () => {
           size="sm"
           class="w-fit min-w-[100px] justify-start hover:cursor-pointer"
         >
-          <template v-if="selectedProgrammingLangague">
-            {{ selectedProgrammingLangague?.title }}
+          <template v-if="selectedProgrammingLanguage">
+            {{ selectedProgrammingLanguage?.title }}
           </template>
           <template v-else>Select programming language </template>
         </Button>
@@ -60,18 +60,18 @@ onMounted(async () => {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               <CommandItem
-                v-for="programmingLangage in programmingLanguages"
-                :key="programmingLangage.value"
-                :value="programmingLangage.value"
+                v-for="programmingLanguage in programmingLanguages"
+                :key="programmingLanguage.title"
+                :value="programmingLanguage"
                 @select="
                   () => {
-                    selectedProgrammingLangague = programmingLangage;
+                    selectedProgrammingLanguage = programmingLanguage;
                     open = false;
-                    emit('languageSelected', programmingLangage.value);
+                    emit('languageSelected', programmingLanguage);
                   }
                 "
               >
-                {{ programmingLangage.title }}
+                {{ programmingLanguage.title }}
               </CommandItem>
             </CommandGroup>
           </CommandList>

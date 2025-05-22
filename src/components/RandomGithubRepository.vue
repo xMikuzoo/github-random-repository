@@ -95,7 +95,9 @@ async function fetchRandomRepositories(language: string) {
             }}
           </CardDescription>
           <Button
-            @click="async () => await fetchRandomRepositories(selectedLanguage)"
+            @click="
+              async () => await fetchRandomRepositories(selectedLanguage ?? '')
+            "
             class="w-fit mt-2"
             variant="secondary"
             :disabled="isLoading"
