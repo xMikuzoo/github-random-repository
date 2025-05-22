@@ -19,4 +19,5 @@ import {
     <CardContent>
       <p class="text-center">Loading...</p>
     </CardContent>
+  </Card>
 </template>
