@@ -15,10 +15,12 @@ import { Button } from "@/components/ui/button";
 import GithubRepositoryCardError from "@/components/GithubRepositoryCardError.vue";
 import ThemeSwitch from "@/components/ThemeSwitch.vue";
 interface GithubRepository {
+  id: number;
   name: string;
   owner: {
     login: string;
     avatar_url: string;
+    html_url: string;
   };
   description: string;
   stargazers_count: number;
@@ -61,7 +63,7 @@ async function fetchRandomRepositories(language: string) {
     randomRepositories.value = randomRepos;
   } catch (error) {
     randomRepositories.value = [];
-    apiCallError.value = error;
+    apiCallError.value = error as Error;
   } finally {
     isLoading.value = false;
     wasLoaded.value = true;
@@ -93,9 +95,7 @@ async function fetchRandomRepositories(language: string) {
             }}
           </CardDescription>
           <Button
-            @click="
-              async () => await fetchRandomRepositories(selectedLanguage.value)
-            "
+            @click="async () => await fetchRandomRepositories(selectedLanguage)"
             class="w-fit mt-2"
             variant="secondary"
             :disabled="isLoading"

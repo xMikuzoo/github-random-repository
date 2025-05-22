@@ -23,8 +23,7 @@ interface ProgrammingLanguage {
 const emit = defineEmits(["languageSelected"]);
 
 const open = ref(false);
-const programmingLanguages: ProgrammingLanguage[] =
-  ref<ProgrammingLanguage[]>();
+const programmingLanguages = ref<ProgrammingLanguage[]>([]);
 const selectedProgrammingLangague = ref<ProgrammingLanguage>();
 
 onMounted(async () => {
@@ -32,7 +31,7 @@ onMounted(async () => {
     "https://raw.githubusercontent.com/kamranahmedse/githunt/master/src/components/filters/language-filter/languages.json"
   )
     .then((response) => response.json())
-    .then((data) => {
+    .then((data: ProgrammingLanguage[]) => {
       programmingLanguages.value = data;
     });
 });
@@ -68,7 +67,7 @@ onMounted(async () => {
                   () => {
                     selectedProgrammingLangague = programmingLangage;
                     open = false;
-                    emit('languageSelected', programmingLangage);
+                    emit('languageSelected', programmingLangage.value);
                   }
                 "
               >

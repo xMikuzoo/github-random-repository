@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { Skeleton } from "@/components/ui/skeleton";
-
 const props = defineProps({
   error: {
     type: Error,
