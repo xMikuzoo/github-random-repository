@@ -40,13 +40,13 @@ onMounted(async () => {
 
 <template>
   <div class="flex items-center space-x-4">
-    <p class="text-sm text-muted-foreground">Programming Language</p>
+    <p class="text-sm text-muted-foreground">Selected Programming Language</p>
     <Popover v-model:open="open">
       <PopoverTrigger as-child>
         <Button
           variant="outline"
           size="sm"
-          class="w-fit justify-start hover:cursor-pointer"
+          class="w-fit min-w-[100px] justify-start hover:cursor-pointer"
         >
           <template v-if="selectedProgrammingLangague">
             {{ selectedProgrammingLangague?.title }}
